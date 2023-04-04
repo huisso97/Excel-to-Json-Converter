@@ -1,6 +1,7 @@
 # ExcelToJson Converter
 
 하단의 이미지와 같이 다중 depths(이미지의 경우 4depths)의 tree 관계에 있는 테이블 데이터들을 파싱하여 HashMap 구조의 json으로 변환하는 converter입니다.
+![excelImg](./image/excelImg.png)
 
 기존 작업 시트 기반으로 수동으로 json으로 변환하는 것에 대한 비효율성과 시중에 있는 컨버터들로는 다중 depths의 테이블들 구조 파싱 처리가 되지 않아 만들게 되었습니다.
 
