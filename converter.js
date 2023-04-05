@@ -1,10 +1,8 @@
-// converter가 부모와 자식관계를 파악하기 위해 upperTitle 등과 같은 unique 값이 있어야함
-// 이렇게 프로퍼티를 추가한 이유는 엑셀 내 공백의 예외 사항이 link의 옵션일 경우, 앞의 상위 뎁스에 대한 공백일 경우, 하위 뎁스에 대한 공백일 경우, 예상치 못하여 저장된 공백일 경우 등이 발생하기 때문에 추가함.
-
 function convertToJSON() {
-  // shee 불러오기
+  // sheet 불러올 때, 주석 해제 필요
   // const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('230327');
   // let [headers, ...rows] = sheet.getDataRange().getValues();
+
   const headers = [
     'upperTitle',
     'buttonName',
@@ -752,7 +750,6 @@ function convertToJSON() {
   let result = [];
 
   // depth 설정
-  const DEPTH = 4;
   const PROPERTY_LENGTH = 8;
 
   // 행기준으로 묶으면서 옵션들은 해당 데이터에 종속시킴
