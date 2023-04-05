@@ -367,8 +367,73 @@ function convertToJSON() {
       '17-1',
       '17-1',
     ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '17-2',
+      '17-2',
+    ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '17-3',
+      '17-4',
+    ],
   ];
-
   let result = [];
 
   // depth 맞춰서 수정하기!
@@ -377,33 +442,54 @@ function convertToJSON() {
   // 행기준으로 묶기
   for (let i = 0; i < rows.length; i++) {
     let tmp = {};
+
+    let objArr = [];
     for (let j = 0; j < rows[i].length; j++) {
-      if (!headers[j]) {
+      if (headers[j].includes('link')) {
+        // console.log(tmp);
+        if (tmp.title) {
+          tmp[headers[j]] = rows[i][j] !== '\b' ? [rows[i][j]] : [];
+          const options = [];
+          // 링크 관련 데이터들 아래로 들어가면서 추가하기
+          for (let k = i + 1; k < rows.length; k++) {
+            // 해당 줄의 타이틀 혹은 콘텐츠가 없고
+            if (rows[k][j - 3].length === 0 && rows[k][j]) {
+              options.push(rows[k][j]);
+            } else {
+              break;
+            }
+          }
+          if (options.length) tmp[headers[j]].push(...options);
+        }
+      } else if (headers[j]) {
+        console.log(tmp);
+        tmp[headers[j]] = rows[i][j] !== '\b' ? rows[i][j] : '';
+      }
+
+      if (Object.keys(tmp).length === 7 && tmp.title) {
+        console.log(tmp);
         result.push(tmp);
         tmp = {};
-        continue;
       }
-      tmp[headers[j]] = rows[i][j] !== '\b' ? rows[i][j] : '';
     }
-    result.push(tmp);
   }
 
+  console.log(result);
   let newData = [];
-  for (let i = 0; i < result.length; i++) {
-    const current = result[i];
-    if (!current.title && current.link) {
-      const linkIndex = i - DEPTH;
-      const target = result[linkIndex];
-      if (linkIndex >= 0) {
-        // console.log(result[i]);
-        target.link += '/' + current.link;
-        target.linkName += '/' + current.linkName;
-      }
-    } else if (current.title) {
-      newData.push(current);
-    }
-  }
-  console.log(newData);
+
+  // for (let i = 0; i < result.length; i++) {
+  //   const current = result[i];
+  //   if (!current.title && current.link) {
+  //     const linkIndex = i - DEPTH;
+  //     const target = result[linkIndex];
+  //     if (linkIndex >= 0) {
+  //       target.link += '/' + current.link;
+  //       target.linkName += '/' + current.linkName;
+  //     }
+  //   } else if (current.title) {
+  //     newData.push(current);
+  //   }
+  // }
 
   let linkId = 0;
   for (let i = 0; i < newData.length; i++) {
@@ -424,7 +510,7 @@ function convertToJSON() {
 
   const obj = {};
   newData.forEach((item, index) => (obj[index] = item));
-  console.log(obj);
+  // console.log(obj);
 }
 
 convertToJSON();
