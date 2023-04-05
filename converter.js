@@ -1,8 +1,12 @@
+// converter가 부모와 자식관계를 파악하기 위해 upperTitle 등과 같은 unique 값이 있어야함
+// 이렇게 프로퍼티를 추가한 이유는 엑셀 내 공백의 예외 사항이 link의 옵션일 경우, 앞의 상위 뎁스에 대한 공백일 경우, 하위 뎁스에 대한 공백일 경우, 예상치 못하여 저장된 공백일 경우 등이 발생하기 때문에 추가함.
+
 function convertToJSON() {
   // shee 불러오기
   // const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('230327');
   // let [headers, ...rows] = sheet.getDataRange().getValues();
   const headers = [
+    'upperTitle',
     'buttonName',
     'buttonImage',
     'title',
@@ -11,6 +15,7 @@ function convertToJSON() {
     'linkName',
     'link',
     '',
+    'upperTitle',
     'buttonName',
     'buttonImage',
     'title',
@@ -19,6 +24,7 @@ function convertToJSON() {
     'linkName',
     'link',
     '',
+    'upperTitle',
     'buttonName',
     'buttonImage',
     'title',
@@ -27,6 +33,7 @@ function convertToJSON() {
     'linkName',
     'link',
     '',
+    'upperTitle',
     'buttonName',
     'buttonImage',
     'title',
@@ -38,6 +45,7 @@ function convertToJSON() {
 
   const rows = [
     [
+      '',
       '1',
       '1',
       '1',
@@ -46,6 +54,7 @@ function convertToJSON() {
       '1',
       '1',
       '',
+      '1',
       '2',
       '2',
       '2',
@@ -54,6 +63,7 @@ function convertToJSON() {
       '2',
       '2',
       '',
+      '2',
       '3',
       '3',
       '3',
@@ -62,6 +72,7 @@ function convertToJSON() {
       '3',
       '3',
       '',
+      '3',
       '4',
       '4',
       '4',
@@ -71,6 +82,7 @@ function convertToJSON() {
       '4',
     ],
     [
+      '',
       '\b',
       '',
       '',
@@ -78,6 +90,7 @@ function convertToJSON() {
       '',
       '1-1',
       '1-1',
+      '',
       '',
       '\b',
       '',
@@ -87,6 +100,7 @@ function convertToJSON() {
       '2-1',
       '2-1',
       '',
+      '',
       '\b',
       '',
       '',
@@ -94,6 +108,7 @@ function convertToJSON() {
       '',
       '3-1',
       '3-1',
+      '',
       '',
       '\b',
       '',
@@ -104,6 +119,44 @@ function convertToJSON() {
       '4-1',
     ],
     [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '1-2',
+      '1-2',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+    ],
+    [
+      '',
       '5',
       '5',
       '5',
@@ -112,6 +165,7 @@ function convertToJSON() {
       '5',
       '5',
       '',
+      '5',
       '6',
       '6',
       '6',
@@ -120,6 +174,7 @@ function convertToJSON() {
       '6',
       '6',
       '',
+      '6',
       '7',
       '7',
       '7',
@@ -128,6 +183,7 @@ function convertToJSON() {
       '7',
       '7',
       '',
+      '7',
       '8',
       '8',
       '8',
@@ -137,6 +193,7 @@ function convertToJSON() {
       '8',
     ],
     [
+      '',
       '\b',
       '',
       '',
@@ -144,6 +201,7 @@ function convertToJSON() {
       '',
       '5-1',
       '5-1',
+      '',
       '',
       '\b',
       '',
@@ -153,6 +211,7 @@ function convertToJSON() {
       '6-1',
       '6-1',
       '',
+      '',
       '\b',
       '',
       '',
@@ -160,6 +219,7 @@ function convertToJSON() {
       '',
       '7-1',
       '7-1',
+      '',
       '',
       '\b',
       '',
@@ -178,6 +238,8 @@ function convertToJSON() {
       '',
       '',
       '',
+      '',
+      '5',
       '9',
       '9',
       '9',
@@ -186,6 +248,7 @@ function convertToJSON() {
       '9',
       '9',
       '',
+      '9',
       '10',
       '10',
       '10',
@@ -194,6 +257,7 @@ function convertToJSON() {
       '10',
       '10',
       '',
+      '10',
       '11',
       '11',
       '11',
@@ -211,15 +275,18 @@ function convertToJSON() {
       '',
       '',
       '',
-      '\b',
       '',
       '',
       '',
       '',
-      '9-1',
-      '9-1',
       '',
-      '\b',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
       '',
       '',
       '',
@@ -227,13 +294,14 @@ function convertToJSON() {
       '10-1',
       '10-1',
       '',
-      '\b',
       '',
       '',
       '',
       '',
-      '11-1',
-      '11-1',
+      '',
+      '',
+      '',
+      '',
     ],
     [
       '',
@@ -252,21 +320,25 @@ function convertToJSON() {
       '',
       '',
       '',
-      '12',
-      '12',
-      '12',
-      '12',
-      '12',
-      '12',
-      '12',
       '',
-      '13',
-      '13',
-      '13',
-      '13',
-      '13',
-      '13',
-      '13',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '10-2',
+      '10-2',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
     ],
     [
       '',
@@ -275,6 +347,74 @@ function convertToJSON() {
       '',
       '',
       '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '10-3',
+      '10-3',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+    ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      5,
+      '12',
+      '12',
+      '12',
+      '12',
+      '12',
+      '12',
+      '12',
+      '',
+      '12',
+      '13',
+      '13',
+      '13',
+      '13',
+      '13',
+      '13',
+      '13',
+      '',
+      '13',
+      '14',
+      '14',
+      '14',
+      '14',
+      '14',
+      '14',
+      '14',
+    ],
+    [
       '',
       '',
       '',
@@ -293,6 +433,7 @@ function convertToJSON() {
       '12-1',
       '12-1',
       '',
+      '',
       '\b',
       '',
       '',
@@ -300,39 +441,15 @@ function convertToJSON() {
       '',
       '13-1',
       '13-1',
-    ],
-    [
-      '14',
-      '14',
-      '14',
-      '14',
-      '14',
-      '14',
-      '14',
       '',
-      '15',
-      '15',
-      '15',
-      '15',
-      '15',
+      '',
+      '\b',
       '',
       '',
       '',
-      '16',
-      '16',
-      '16',
-      '16',
-      '16',
-      '16',
-      '16',
       '',
-      '17',
-      '17',
-      '17',
-      '17',
-      '17',
-      '17',
-      '17',
+      '14-1',
+      '14-1',
     ],
     [
       '',
@@ -352,20 +469,98 @@ function convertToJSON() {
       '',
       '',
       '',
+      '',
+      '12',
+      '15',
+      '15',
+      '15',
+      '15',
+      '15',
+      '15',
+      '15',
+      '',
+      '15',
+      '16',
+      '16',
+      '16',
+      '16',
+      '16',
+      '16',
+      '16',
+    ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '\b',
+      '',
+      '',
+      '',
+      '',
+      '15-1',
+      '15-1',
+      '',
+      '',
+      '\b',
       '',
       '',
       '',
       '',
       '16-1',
       '16-1',
+    ],
+    [
       '',
       '',
       '',
       '',
       '',
       '',
-      '17-1',
-      '17-1',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '15',
+      '17',
+      '17',
+      '17',
+      '17',
+      '17',
+      '17',
+      '17',
     ],
     [
       '',
@@ -396,9 +591,50 @@ function convertToJSON() {
       '',
       '',
       '',
+      '\b',
       '',
-      '17-2',
-      '17-2',
+      '',
+      '',
+      '',
+      '1777',
+      '1777',
+    ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '15',
+      '18',
+      '18',
+      '18',
+      '18',
+      '18',
+      '18',
+      '18',
     ],
     [
       '',
@@ -429,72 +665,133 @@ function convertToJSON() {
       '',
       '',
       '',
+      '\b',
       '',
-      '17-3',
-      '17-4',
+      '',
+      '',
+      '',
+      '1188',
+      '1888',
+    ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '15',
+      '19',
+      '19',
+      '19',
+      '19',
+      '19',
+      '19',
+      '19',
+    ],
+    [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '\b',
+      '',
+      '',
+      '',
+      '',
+      '199',
+      '16-1',
     ],
   ];
+
   let result = [];
 
-  // depth 맞춰서 수정하기!
+  // depth 설정
   const DEPTH = 4;
+  const PROPERTY_LENGTH = 8;
 
-  // 행기준으로 묶기
+  // 행기준으로 묶으면서 옵션들은 해당 데이터에 종속시킴
   for (let i = 0; i < rows.length; i++) {
     let tmp = {};
-
-    let objArr = [];
     for (let j = 0; j < rows[i].length; j++) {
       if (headers[j].includes('link')) {
-        // console.log(tmp);
         if (tmp.title) {
           tmp[headers[j]] = rows[i][j] !== '\b' ? [rows[i][j]] : [];
           const options = [];
           // 링크 관련 데이터들 아래로 들어가면서 추가하기
           for (let k = i + 1; k < rows.length; k++) {
-            // 해당 줄의 타이틀 혹은 콘텐츠가 없고
+            // 해당 줄의 타이틀 혹은 콘텐츠가 없으면 상위에 종속되는 행임
             if (rows[k][j - 3].length === 0 && rows[k][j]) {
               options.push(rows[k][j]);
             } else {
+              // 새로운 행 만나면 멈춰
               break;
             }
           }
-          if (options.length) tmp[headers[j]].push(...options);
+          tmp[headers[j]].push(...options);
+          // if (options.length) tmp[headers[j]].push(...options);
         }
       } else if (headers[j]) {
-        console.log(tmp);
         tmp[headers[j]] = rows[i][j] !== '\b' ? rows[i][j] : '';
       }
 
-      if (Object.keys(tmp).length === 7 && tmp.title) {
-        console.log(tmp);
+      if (Object.keys(tmp).length === PROPERTY_LENGTH && tmp.title) {
         result.push(tmp);
         tmp = {};
       }
     }
   }
 
-  console.log(result);
-  let newData = [];
-
-  // for (let i = 0; i < result.length; i++) {
-  //   const current = result[i];
-  //   if (!current.title && current.link) {
-  //     const linkIndex = i - DEPTH;
-  //     const target = result[linkIndex];
-  //     if (linkIndex >= 0) {
-  //       target.link += '/' + current.link;
-  //       target.linkName += '/' + current.linkName;
-  //     }
-  //   } else if (current.title) {
-  //     newData.push(current);
-  //   }
-  // }
-
+  // links로 묶기
   let linkId = 0;
-  for (let i = 0; i < newData.length; i++) {
-    const linkNames = newData[i].linkName.split('/');
-    const links = newData[i].link.split('/');
+  for (let i = 0; i < result.length; i++) {
+    const linkNames = result[i].linkName;
+    const links = result[i].link;
 
     const linkArray = linkNames.map((name, index) => ({
       linkId: `l${linkId++}`,
@@ -502,15 +799,33 @@ function convertToJSON() {
       linkName: name,
     }));
 
-    delete newData[i].linkName;
-    delete newData[i].link;
+    delete result[i].linkName;
+    delete result[i].link;
 
-    newData[i].links = linkArray;
+    result[i].links = linkArray;
   }
 
+  // index 적용
   const obj = {};
-  newData.forEach((item, index) => (obj[index] = item));
-  // console.log(obj);
+  result.forEach((item, index) => {
+    obj[index] = item;
+  });
+
+  // 부모 & 자식 관계 설정
+  for (const [key, value] of Object.entries(obj)) {
+    const selection = 'selection';
+    value[selection] = [];
+    // console.log(key, value);s
+    for (const [childKey, childValue] of Object.entries(obj)) {
+      if (childValue.upperTitle === value.title) {
+        value[selection].push(childKey);
+        const parent = 'parent';
+        childValue[parent] = key;
+      }
+    }
+  }
+
+  console.log(obj);
 }
 
 convertToJSON();
