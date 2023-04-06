@@ -22,7 +22,204 @@ Google AppsScript, JavaScript
 4. 하단의 headers와 rows 상수값들은 주석처리한다.
 5. 함수 실행
 
-## 진행 단계
+## 결과
+
+<details><summary>Json Console 결과 보기</summary>
+console에서는 Object의 데이터가 가려져서 나오지만, 데이터 직접 처리할 때는 해당 객체 데이터에 접근 가능하다. 
+  
+```json
+{ '0':
+   { upperTitle: '',
+     buttonName: '1',
+     buttonImage: '1',
+     title: '1',
+     contents: '1',
+     contentImage: '1',
+     links: [ [Object], [Object], [Object] ],
+     selection: [ '1' ] },
+  '1':
+   { upperTitle: '1',
+     buttonName: '2',
+     buttonImage: '2',
+     title: '2',
+     contents: '2',
+     contentImage: '2',
+     links: [ [Object], [Object] ],
+     parent: '0',
+     selection: [ '2' ] },
+  '2':
+   { upperTitle: '2',
+     buttonName: '3',
+     buttonImage: '3',
+     title: '3',
+     contents: '3',
+     contentImage: '3',
+     links: [ [Object], [Object] ],
+     parent: '1',
+     selection: [ '3' ] },
+  '3':
+   { upperTitle: '3',
+     buttonName: '4',
+     buttonImage: '4',
+     title: '4',
+     contents: '4',
+     contentImage: '4',
+     links: [ [Object], [Object] ],
+     parent: '2',
+     selection: [] },
+  '4':
+   { upperTitle: '',
+     buttonName: '5',
+     buttonImage: '5',
+     title: '5',
+     contents: '5',
+     contentImage: '5',
+     links: [ [Object], [Object] ],
+     selection: [ '5', '8' ] },
+  '5':
+   { upperTitle: '5',
+     buttonName: '6',
+     buttonImage: '6',
+     title: '6',
+     contents: '6',
+     contentImage: '6',
+     links: [ [Object], [Object] ],
+     parent: '4',
+     selection: [ '6' ] },
+  '6':
+   { upperTitle: '6',
+     buttonName: '7',
+     buttonImage: '7',
+     title: '7',
+     contents: '7',
+     contentImage: '7',
+     links: [ [Object], [Object] ],
+     parent: '5',
+     selection: [ '7' ] },
+  '7':
+   { upperTitle: '7',
+     buttonName: '8',
+     buttonImage: '8',
+     title: '8',
+     contents: '8',
+     contentImage: '8',
+     links: [ [Object], [Object] ],
+     parent: '6',
+     selection: [] },
+  '8':
+   { upperTitle: '5',
+     buttonName: '9',
+     buttonImage: '9',
+     title: '9',
+     contents: '9',
+     contentImage: '9',
+     links: [ [Object] ],
+     parent: '4',
+     selection: [ '9' ] },
+  '9':
+   { upperTitle: '9',
+     buttonName: '10',
+     buttonImage: '10',
+     title: '10',
+     contents: '10',
+     contentImage: '10',
+     links: [ [Object], [Object], [Object], [Object] ],
+     parent: '8',
+     selection: [ '10' ] },
+  '10':
+   { upperTitle: '10',
+     buttonName: '11',
+     buttonImage: '11',
+     title: '11',
+     contents: '11',
+     contentImage: '11',
+     links: [ [Object] ],
+     parent: '9',
+     selection: [] },
+  '11':
+   { upperTitle: 5,
+     buttonName: '12',
+     buttonImage: '12',
+     title: '12',
+     contents: '12',
+     contentImage: '12',
+     links: [ [Object], [Object] ],
+     selection: [ '12', '14' ] },
+  '12':
+   { upperTitle: '12',
+     buttonName: '13',
+     buttonImage: '13',
+     title: '13',
+     contents: '13',
+     contentImage: '13',
+     links: [ [Object], [Object] ],
+     parent: '11',
+     selection: [ '13' ] },
+  '13':
+   { upperTitle: '13',
+     buttonName: '14',
+     buttonImage: '14',
+     title: '14',
+     contents: '14',
+     contentImage: '14',
+     links: [ [Object], [Object] ],
+     parent: '12',
+     selection: [] },
+  '14':
+   { upperTitle: '12',
+     buttonName: '15',
+     buttonImage: '15',
+     title: '15',
+     contents: '15',
+     contentImage: '15',
+     links: [ [Object], [Object] ],
+     parent: '11',
+     selection: [ '15', '16', '17', '18' ] },
+  '15':
+   { upperTitle: '15',
+     buttonName: '16',
+     buttonImage: '16',
+     title: '16',
+     contents: '16',
+     contentImage: '16',
+     links: [ [Object], [Object] ],
+     parent: '14',
+     selection: [] },
+  '16':
+   { upperTitle: '15',
+     buttonName: '17',
+     buttonImage: '17',
+     title: '17',
+     contents: '17',
+     contentImage: '17',
+     links: [ [Object], [Object] ],
+     parent: '14',
+     selection: [] },
+  '17':
+   { upperTitle: '15',
+     buttonName: '18',
+     buttonImage: '18',
+     title: '18',
+     contents: '18',
+     contentImage: '18',
+     links: [ [Object], [Object] ],
+     parent: '14',
+     selection: [] },
+  '18':
+   { upperTitle: '15',
+     buttonName: '19',
+     buttonImage: '19',
+     title: '19',
+     contents: '19',
+     contentImage: '19',
+     links: [ [Object], [Object] ],
+     parent: '14',
+     selection: [] } }
+```
+
+</details>
+
+## 코드 구현 단계별 설명
 
 1. `SpreadsheetApp.getActiveSpreadsheet().getSheetByName('sheet명')`으로 sheet 불러오기
 2. `sheet.getDataRange().getValues()`로 데이터 추출
@@ -49,5 +246,5 @@ converter가 부모와 자식관계를 파악하기 위해 upperTitle 등과 같
 
 ## 남은 작업
 
-- [ x ] link의 갯수가 유효할 때까지 계속 merge되도록 리팩토링 (기존에는 2개까지만 merge가 됐었음)
-- [ x ] depth 간 부모-자식 관계 처리를 위한 selections 프로퍼티 추가 및 자식 id 처리
+- [x] link의 갯수가 유효할 때까지 계속 merge되도록 리팩토링 (기존에는 2개까지만 merge가 됐었음)
+- [x] depth 간 부모-자식 관계 처리를 위한 selections 프로퍼티 추가 및 자식 id 처리

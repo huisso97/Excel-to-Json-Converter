@@ -771,7 +771,6 @@ function convertToJSON() {
             }
           }
           tmp[headers[j]].push(...options);
-          // if (options.length) tmp[headers[j]].push(...options);
         }
       } else if (headers[j]) {
         tmp[headers[j]] = rows[i][j] !== '\b' ? rows[i][j] : '';
@@ -786,24 +785,27 @@ function convertToJSON() {
 
   // links로 묶기
   let linkId = 0;
+
   for (let i = 0; i < result.length; i++) {
     const linkNames = result[i].linkName;
     const links = result[i].link;
-
-    const linkArray = linkNames.map((name, index) => ({
-      linkId: `l${linkId++}`,
-      link: links[index],
-      linkName: name,
-    }));
+    result[i].linkArr = [];
+    linkNames.slice().map((name, index) => {
+      const linkArray = {
+        linkId: `l${linkId++}`,
+        link: links[index],
+        linkName: name,
+      };
+      result[i].linkArr.push(linkArray);
+    });
 
     delete result[i].linkName;
     delete result[i].link;
-
-    result[i].links = linkArray;
   }
 
   // index 적용
   const obj = {};
+
   result.forEach((item, index) => {
     obj[index] = item;
   });
@@ -812,7 +814,7 @@ function convertToJSON() {
   for (const [key, value] of Object.entries(obj)) {
     const selection = 'selection';
     value[selection] = [];
-    // console.log(key, value);s
+
     for (const [childKey, childValue] of Object.entries(obj)) {
       if (childValue.upperTitle === value.title) {
         value[selection].push(childKey);
@@ -820,9 +822,10 @@ function convertToJSON() {
         childValue[parent] = key;
       }
     }
+    console.log(key, value);
   }
 
-  console.log(obj);
+  // console.log(obj);
 }
 
 convertToJSON();
