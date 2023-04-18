@@ -785,19 +785,19 @@ function convertToJSON() {
 
   // links로 묶기
   let linkId = 0;
-
   for (let i = 0; i < result.length; i++) {
     const linkNames = result[i].linkName;
     const links = result[i].link;
-    result[i].linkArr = [];
-    linkNames.map((name, index) => {
-      const linkArray = {
+    if (linkNames[0]) {
+      const linkArray = linkNames.map((name, index) => ({
         linkId: `l${linkId++}`,
         link: links[index],
         linkName: name,
-      };
-      result[i].linkArr.push(linkArray);
-    });
+      }));
+      result[i].links = linkArray;
+    } else {
+      result[i].links = [];
+    }
 
     delete result[i].linkName;
     delete result[i].link;
