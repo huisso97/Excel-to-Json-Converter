@@ -21,6 +21,7 @@ Google AppsScript, JavaScript
 3. AppsScript에 converter 함수를 넣고, sheet 불러오는 코드에 대한 주석을 해제한다.
 4. 하단의 headers와 rows 상수값들은 주석처리한다.
 5. 함수 실행
+6. 구글 드라이브에 json 생성 파일 확인
 
 ## 결과
 
@@ -237,6 +238,7 @@ const PROPERTY_LENGTH = 8;
 8. uniqueid를 인덱스로 가지는 hashmap 구조로 변환
 9. 이중 반복문으로 자신의 title을 upperTitle로 가지고 있는 자식 데이터의 uniqueid를 selection에 추가하여 부모 자식 관계 설정.
    - 꼭 upperTitle이 아니더라도 uinque한 값을 기준으로 연결 지으면 됨
+10. **[output size 초과에 대한 이슈]** 로그로 찍혀 나온 결과값들은 크기가 크면 잘려서 나오기 때문에, 이에 대응하여 json 파일을 만들어 내어 Google Drive로 저장해줌
 
 ### upperTitle 프로퍼티 설정 이유
 
